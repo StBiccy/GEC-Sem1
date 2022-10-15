@@ -29,11 +29,15 @@ int main()
 
 		}
 	}
-	if (weather == 2)
+	else if (weather == 2)
 	{
 		if (temp > 5)
 		{
-			cout << "Wear a something wam" << endl;
+			cout << "Wear a something warm" << endl;
+		}
+		else if (temp > 0)
+		{
+			cout << "Wrap up well" << endl;
 		}
 		else
 		{
@@ -45,4 +49,5 @@ int main()
 		cout << "Have a nice day" << endl;
 	}
 
+	
 }
