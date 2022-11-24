@@ -11,10 +11,20 @@ int main()
 
 	cout << "Please input a sentence, but instead of spaces use commas." << endl;
 
-	cin.getline(text, 50);
+	cin.getline(text, 100);
+
+
+	for (int i = 0; text[i] != NULL; ++i)
+	{
+		comma2blank(&text[i]);
+	}
+
+	cout << text;
 }
 
 void comma2blank(char* textToChange)
 {
+	if (*textToChange == ',')
+		*textToChange = ' ';
 
 }
