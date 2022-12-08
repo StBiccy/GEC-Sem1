@@ -24,6 +24,7 @@
     <ProjectGuid>{2ec594cb-447b-4b38-862f-cd7e8f39ecba}</ProjectGuid>
     <RootNamespace>Progtam15StarryOutput</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Program15_StarryOutput</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

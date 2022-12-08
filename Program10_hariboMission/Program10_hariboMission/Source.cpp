@@ -11,6 +11,4 @@ int main()
 
 	cout << "I have " << Haribo << " packets Haribos, and im sharing it between " << students << " students." << endl;
 	cout << "They each get " << shared << ", so i get to eat the remainding " << remainding << " packets." << endl;
-
-
 }

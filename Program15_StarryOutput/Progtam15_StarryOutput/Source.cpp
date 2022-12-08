@@ -21,7 +21,7 @@ int main ()
 	do
 	{
 		
-		cout << "Do you wat to have anouther go. [Y or N]" << endl << "caps sensitive!" << endl;
+		cout << "Do you want to have anouther go. [Y or N]" << endl << "caps sensitive!" << endl;
 		cin >> a;
 
 		if (a == 'Y')
