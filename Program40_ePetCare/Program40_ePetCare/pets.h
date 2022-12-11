@@ -1,58 +1,43 @@
-#pragma once
 #ifndef PETS_H
-#define PETS_H
-#include <iostream>
-using namespace std;
+#define PETS _H
 
-
-class pet
+class Pet
 {
 public:
-	pet(int hunger, int boredom);
-	~pet();
-	virtual void talk();
-
-	void feed(int food = 4);
-	void play(int fun = 4);
-
-
+	Pet(int huger = 0, int boredom = 0);
+	~Pet();
+	virtual void Talk();
+	void Feed(int food = 4);
+	void Play(int fun = 4);
 private:
-	int m_hunger = 0;
-	int m_bored = 0;
+	int m_hunger;
+	int m_bored;
 protected:
-	inline const int GetMood()
-	{
-		return m_hunger + m_bored;
-	}
+	inline const int GetMood() { return m_hunger + m_bored; }
 	void PassingTime(int time = 1);
 };
 
-
-
-class cat :public pet
+class Cat : public Pet
 {
 public:
-	cat();
-	~cat();
-	void talk() const { cout << "Im a cat" << endl; };
+	Cat();
+	~Cat();
+	virtual void talk();
 };
 
-
-
-class dog :public pet
+class Dog : public Pet
 {
 public:
-	dog();
-	~dog();
-	void talk() const { cout << "Im a dog" << endl; };
-
+	Dog();
+	~Dog();
+	virtual void talk();
 };
-class hamster :public pet
+
+class Hamster : public Pet
 {
 public:
-	hamster();
-	~hamster();
-	void talk() const { cout << "Im a hamster" << endl; };
+	Hamster();
+	~Hamster();
+	virtual void talk();
 };
-
-#endif //PETS_H
+#endif // !PETS_H

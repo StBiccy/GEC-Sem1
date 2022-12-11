@@ -1,124 +1,98 @@
 #include <iostream>
-#include "pets.h"
+#include "Pets.h"
 
 using namespace std;
 
 int main()
 {
-	pet* petPtr;
+	Pet* petPtr;
 	int choice;
+	cout << "What pet do you want? 1.Cat 2.Dog 3.Hamster: ";
+	cin >> choice;
 
-	while (true)
+	cin.clear();
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+	switch (choice)
 	{
-		cout << "What pet would you like\n 1: cat\n 2: dog\n 3: hamster" << endl;
-		cin >> choice;
+	case 1:
+		petPtr = new Cat();
+		break;
 
-		switch (choice)
-		{
-		case 1:
-			petPtr = new cat();
-			petPtr->talk();
-			break;
+	case 2:
+		petPtr = new Dog();
+		break;
 
-		case 2:
-			petPtr = new dog();
-			petPtr->talk();
-			break;
+	case 3:
+		petPtr = new Hamster();
+		break;
 
-		case 3:
-			petPtr = new hamster();
-			petPtr->talk();
-			break;
-
-		default:
-			goto exit_loop;
-			choice = 0;
-			cout << "Option not avalible!" << endl;
-			break;
-		}
+	default:
+		petPtr = new Pet();
+		break;
 	}
 
-exit_loop:;
-	choice = 0;
-
-	
-
-	while (true)
-	{
-		cin >> choice;
-
-		switch (choice)
-		{
-		case 0:
-			goto skip_loop;
-			break;
-		case 1:
-			petPtr->talk();
-			break;
-		case 2:
-			petPtr->feed();
-			break;
-		case 3:
-			petPtr->play();
-			break;
-		default:
-			break;
-		}
-	}
-
-skip_loop:;
 }
 
-
-pet::pet(int hunger, int boredom)
+Pet::Pet(int hunger, int boredom)
 {
+	cout << "A new pet has arrived!" << endl;
+
 	m_hunger = hunger;
 	m_bored = boredom;
 }
 
-void pet::feed(int food)
+void Pet::Feed(int food)
 {
-	cout << "Burp!" << endl;
+	cout << "burp" << endl;
 	m_hunger -= food;
 	if (m_hunger < 0)
+	{
 		m_hunger = 0;
+	}
+
 	PassingTime();
 }
 
-void pet::play(int fun)
+void Pet::Play(int fun)
 {
-	cout << "They had fun!" << endl;
+	cout << "You played =)" << endl;
 	m_bored -= fun;
 	if (m_bored < 0)
+	{
 		m_bored = 0;
+	}
+
 	PassingTime();
 }
 
-void pet::talk()
+void Pet::Talk()
 {
 	cout << "I am your pet and I feel";
+
 	int mood = GetMood();
 	if (mood > 15)
 	{
-		cout << " mad!" << endl;
-	}
+		cout << "MAD!!" << endl;
+	}	
 	else if (mood > 10)
 	{
-		cout << " frustrated." << endl;
+		cout << "frustrated." << endl;
 	}
 	else if (mood > 5)
 	{
-		cout << " okay." << endl;
+		cout << "okay."<< endl;
 	}
 	else
 	{
-		cout << " happy!" << endl;
+		cout << "happy!" << endl;
 	}
+
+	PassingTime();
 }
 
-void pet::PassingTime(int time)
+void Pet::PassingTime(int time)
 {
 	m_hunger += time;
 	m_bored += time;
 }
-

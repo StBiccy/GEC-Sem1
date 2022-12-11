@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 
+using namespace std;
+
 struct s
 {
 	std::string name;
@@ -9,37 +11,52 @@ struct s
 
 int main()
 {
+
 	s input;
-	std::fstream file;
+
+	ifstream inFile;
+	ofstream outFile;
+
+	s held[10];
+
+	inFile.open("scores.txt");
+	
+	if (!inFile.eof())
+	{
+		for (int i = 0; i < 10; ++i)
+		{
+			if (!inFile.eof())
+			{
+				inFile >> held[i].score;
+				inFile >> held[i].name;
+			}
+			else
+				i = 10;
+		}
+	}
 
 	while (true)
 	{
+		system("cls");
+
 		int choice;
-		std::cout << "1: Enter a score\n2: Display scores\n3: Exit" << std::endl;
-		std::cin >> choice;
+		cout << "1: Enter a score\n2: Display scores\n3: Exit" << std::endl;
+		cin >> choice;
 
 		switch (choice)
 		{
 		case 1:
-			file.open("score.txt");
+			inFile.open("score.txt");
 
-			std::cout << "Enter score: " << std::endl;
-			std::cin >> input.score;
+			cout << "Enter score: " << std::endl;
+			cin >> input.score;
 
-			std::cout << "Enter name: " << std::endl;
-			std::cin >> input.name;
-
+			cout << "Enter name: " << std::endl;
+			cin >> input.name;
 
 			for (int i = 0; i < 10; ++i)
 			{
-				int num;
-				file >> num;
 
-				if (num > input.score)
-				{
-
-
-				}
 			}
 
 
@@ -50,15 +67,13 @@ int main()
 			break;
 
 		case 3:
-			goto exitLoop;
+
 			break;
 
 		default:
-			std::cout << "Invalid" << std::endl;
+			std::cout << "Invalid Input" << std::endl;
+			system("pause");
 			break;
 		}
 	}
-
-exitLoop:;
-	return 0;
 }
