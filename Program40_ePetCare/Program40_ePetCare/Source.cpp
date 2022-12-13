@@ -32,6 +32,46 @@ int main()
 		break;
 	}
 
+	petPtr->Talk();
+
+	system("pause");
+
+
+	while (true)
+	{
+		choice = 0;
+
+		system("cls");
+
+		cout << "\n 0: Quit  1: Listen to your pet  2: Feed your pet  3: Play with your pet" << endl;
+
+		cin >> choice;
+
+		switch (choice)
+		{
+		case 0:
+			goto exit_loop;
+			break;
+		case 1:
+			petPtr->Talk();
+			system("pause");
+			break;
+		case 2:
+			petPtr->Feed();
+			system("pause");
+			break;
+		case 3:
+				petPtr->Play();
+				system("pause");
+				break;
+		default:
+			cout << "Invalid choice." << endl;
+			system("pause");
+			break;
+		}
+	}
+
+exit_loop:;
 }
 
 Pet::Pet(int hunger, int boredom)
@@ -68,7 +108,7 @@ void Pet::Play(int fun)
 
 void Pet::Talk()
 {
-	cout << "I am your pet and I feel";
+	cout << "I am your pet and I feel ";
 
 	int mood = GetMood();
 	if (mood > 15)

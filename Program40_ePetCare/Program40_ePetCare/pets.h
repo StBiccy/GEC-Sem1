@@ -1,5 +1,7 @@
 #ifndef PETS_H
 #define PETS _H
+#include <iostream>
+using namespace std;
 
 class Pet
 {
@@ -20,24 +22,91 @@ protected:
 class Cat : public Pet
 {
 public:
-	Cat();
-	~Cat();
-	virtual void talk();
+	void Talk()
+	{
+
+		cout << "I'm a cat " << endl;
+		cout << "I am your pet and I feel ";
+
+		int mood = GetMood();
+		if (mood > 15)
+		{
+			cout << "MAD!!" << endl;
+		}
+		else if (mood > 10)
+		{
+			cout << "frustrated." << endl;
+		}
+		else if (mood > 5)
+		{
+			cout << "okay." << endl;
+		}
+		else
+		{
+			cout << "happy!" << endl;
+		}
+
+		PassingTime();
+	}
 };
 
 class Dog : public Pet
 {
 public:
-	Dog();
-	~Dog();
-	virtual void talk();
+	void Talk() 
+	{
+		cout << "I'm a dog " << endl;
+		cout << "I am your pet and I feel ";
+
+		int mood = GetMood();
+		if (mood > 15)
+		{
+			cout << "MAD!!" << endl;
+		}
+		else if (mood > 10)
+		{
+			cout << "frustrated." << endl;
+		}
+		else if (mood > 5)
+		{
+			cout << "okay." << endl;
+		}
+		else
+		{
+			cout << "happy!" << endl;
+		}
+
+		PassingTime();
+	}
 };
 
 class Hamster : public Pet
 {
 public:
-	Hamster();
-	~Hamster();
-	virtual void talk();
+	void Talk() 
+	{
+		cout << "I'm a hamster " << endl;
+		cout << "I am your pet and I feel ";
+
+		int mood = GetMood();
+		if (mood > 15)
+		{
+			cout << "MAD!!" << endl;
+		}
+		else if (mood > 10)
+		{
+			cout << "frustrated." << endl;
+		}
+		else if (mood > 5)
+		{
+			cout << "okay." << endl;
+		}
+		else
+		{
+			cout << "happy!" << endl;
+		}
+
+		PassingTime();
+	}
 };
 #endif // !PETS_H
