@@ -1,9 +1,9 @@
-# GEC-Sem1
+# Game Engine Creation
 
 <details>
-<summary> 1: If Statements</summary>
+<summary> 1: Hello World</summary>
 <br>
-
+The first program I made as part of this module is was the hello world program, almost all programmers would know this is the basic bear bones program that every programmer typcily startd with.
 </details>
 
 <details>
