@@ -1138,51 +1138,526 @@ Aside from the use of the rand function, this just had me use principles I alrea
 </details>
 </details>
 <br>
-
+<details>
+<summary> Chapter 10: Deubg</summary>
+<br>
+        
 <details>
 <summary> 30: Broken Code</summary>
 <br>
+Program 30 consists of code that was broken and I was tasked with fixing but since the problem was relitvly simple I solved it without having to  go though the whole debuging proccess.
+<br>
+<details>
+<summary> code to fix</summary>
+	
+![image](https://user-images.githubusercontent.com/115167027/207689841-c1ebb8fd-65de-4aa1-9cd2-45fcf89cd415.png)	
+</details>
+<br>
+	
+```
+#include <iostream>
 
+int main()
+{
+	int num1 = 5;
+
+	for (int i = 0; i < num1; ++i)
+	{
+		std::cout << "i= " << i << std::endl;
+	}
+	int num2 = 15;
+
+	for (int i = 0; i < num2; ++i)
+	{
+		std::cout << "i= " << i << std::endl;
+	}
+
+	std::cin.get();
+		return 0;
+}
+```
 </details>
 
 <details>
 <summary> 31: Unexpected Code</summary>
 <br>
+Program 31 had me do the same thing as program 30 which is fix a set of broken code, and just like 30 I fixed it relitivly quickly since it was an easy set of code to fix.
+	
+<br>
+<details>
+<summary> code to fix</summary>
+        
+![image](https://user-images.githubusercontent.com/115167027/207691583-e62a93bc-8942-4104-8697-cdaec628b769.png)x		
+</details>
+<br>
+
+```	
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int count = 3;
+
+	for (int i = 1; i < count + 1; ++i)
+	{
+		cout << i;
+		if (i == 2)
+		{
+			cout << " is an even number" << endl;
+		}
+		else
+		{
+			cout << " is an odd number" << endl;
+		}
+	}
+	cin.get();
+
+	return 0;
+}
+```
+
 
 </details>
 
 <details>
 <summary> 32: Broken BMI</summary>
 <br>
+program 32 I was provided a script that was broken and it was my job to debug and fix it, the output of the script was supposed to be a functional BMI.
+<br>
+I did mannage to finish this program but the file no longer opens as it's supposed to I havn't got any reason to fix it since this was not important to my grade.     
 
 </details>
-
-<details>
-<summary> 33: Structs</summary>
+</details>
 <br>
 
-</details>
+<details>
+<summary> Chapter 11: Structs</summary>
+<br>       
+        
+<details>        
+<summary> 33: Structs</summary>
+<br>
+Program 33 was my first time using structs to hold values, and all I needed to do was input some values into a struct, and from a function in the struct I would output the values.
+        
+```
+struct info
+{
+	string name;
+	int age;
+	string number;
 
+	void PrintDetails()
+	{
+		cout << "\nYour details are:" << endl;
+		cout << "Name: " << name << endl;
+		cout << "Age: " << age << endl;
+		cout << "Phone Number: " << number << endl;
+	}
+};
+
+int main()
+{
+	info data;
+	cout << "Enter your name:" << endl;
+	getline(cin, data.name);
+
+	cout << "\nEnter your age:" << endl;
+	cin>>data.age;
+
+	cout << "\nEnter your phone number:" << endl;
+	cin >> data.number;
+
+	data.PrintDetails();
+}        
+```
+</details>
+</details>
+<br>
+      
+<details>
+<summary> Chapter 12: Pointers</summary>
+<br>
+
+        
 <details>
 <summary> 34: Replacing Commas With Spaces</summary>
 <br>
+Program 34 had using pointers for the first time, and with this I was tasked with using pointers to change a char array value that has a sentence in it, and replace the commas with spaces instead but I had to change the value in a different function from the main.
+<br>
+Since pointers hold the values memory address it will change the value held in that memory address and as such every other corrosponding value with that memory address.
+        
+```
+void comma2blank(char* textToChange);
+
+int main()
+{
+	char text[100];
+
+	cout << "Please input a sentence, but instead of spaces use commas." << endl;
+
+	cin.getline(text, 100);
+
+
+	for (int i = 0; text[i] != NULL; ++i)
+	{
+		comma2blank(&text[i]);
+	}
+
+	cout << text;
+}
+
+void comma2blank(char* textToChange)
+{
+	if (*textToChange == ',')
+		*textToChange = ' ';
+
+}
+```
+<br>
+
+![image](https://user-images.githubusercontent.com/115167027/207697013-1c471010-d058-4cb3-a261-904e64870106.png)
 
 </details>
 
 <details>
 <summary> 35: Changing Pointers</summary>
 <br>
+Program 35 had me practicaly just demonstrating how a pointer works, by using functions and the such to output values, their address in memory, pointers directed to those values and their address in memory.
+
+```
+void inputDetails(int* n1, int* n2);
+void outputDetails(int& interger1, int& interger2, int* pointer);
+
+
+int main()
+{
+	int num1;
+	int num2;
+	int* pNum = &num1;
+
+	inputDetails(&num1, &num2);
+	outputDetails(num1, num2, pNum);
+
+	pNum = &num2;
+
+	cout << "\nReassigning pNum to num2" << endl;
+
+
+	outputDetails(num1, num2, pNum);
+}
+
+void inputDetails(int* n1, int* n2)
+{
+	cout << "Please Input two numbers." << endl;
+
+	cin >> *n1;
+	cin >> *n2;
+}
+
+void outputDetails(int& interger1, int& interger2, int* pointer)
+{
+	cout << "\n num1 is : " << interger1;
+	cout << "\n Adress for num1 is : " << &interger1;
+	cout << "\n num2 is : " << interger2;
+	cout << "\n Adress for num2 is : " << &interger2;
+	cout << "\n pNum's derefrenced value is : " << *pointer;
+	cout << "\n Adress for pNum is : " << pointer;
+}
+```
+<br>
+
+![image](https://user-images.githubusercontent.com/115167027/207697619-9593e641-8584-426c-bc82-1a85d0f428f0.png)
 
 </details>
-
+</details>
+        
+<br>
+<details>
+<summary> Chapter 13: Refernce</summary>
+<br>
+        
 <details>
 <summary> 36: Using Refernce</summary>
 <br>
+Program 36 had me learning how to use refrences for the first time. What I'm suppised to do is using refrences I have to minus 25 from one value and add 25 to anouther, but within different functions.
+<br>
+Refrences are similar to pointers in the fact that they hold the memory address of the user but they are also less syntax heavy.
+
+```
+void plus25(int& n);
+void minus25(int& n);
+
+
+int main()
+{
+	int num;
+	int& rNum = num;
+
+	cout << "Enter a number" << endl;
+	cin >> num;
+	cout << num<<endl;
+
+	plus25(rNum);
+	cout << num << endl;
+
+	cout << "\nEnter a new number" << endl;
+	cin >> num;
+	cout << num << endl;
+
+	minus25(rNum);
+	cout << num << endl;
+
+
+}
+void plus25(int& n)
+{
+	n += 25;
+}
+
+void minus25(int& n)
+{
+	n -= 25;
+}
+```
+<br>
+
+![image](https://user-images.githubusercontent.com/115167027/207698889-f2040d6b-09ac-4ce6-a539-db6d4debf732.png)
 
 </details>
 
 <details>
 <summary> 37: Designated User name</summary>
 <br>
+Program 37 has me using refrences to build a user name, and I also get to use srand with the rand function which allows me to set the seed of rand and stop make the random values less predictable.
+<br>
+For this I just created a random set of ints in a function using rand and appeaded it to a refrence holding the username the user wanted.
+        
+```
+int main()
+{
+	string name;
 
+	cout << "Enter a new username!" << endl;
+	cin >> name;
+
+	cout << "Username taken" << endl;
+
+	newUser(name);
+
+	cout << "Try\n"<< name << endl;
+}
+
+void newUser(string& s)
+{
+	srand(time(NULL));
+	int num = rand();
+	s += to_string(num);	
+}
+```      
+<br>
+
+![image](https://user-images.githubusercontent.com/115167027/207699675-e139a203-e973-4070-905c-b145f1bad491.png)
+
+</details>
+</details>
+<br>
+        
+<details>
+<summary>Chapter 14: File Handeling</summary>
+<br>
+<details>
+<summary>38: Account Holding</summary>
+<br>
+Program 38 had me start using file hadelig and the fstream libary inorder to save information between sessions.
+<br>
+For this program I added to append files into a system that holds information on a persons Name, Account number, and balance. After getting that information into a file depending on the users choice the console needs to output all accounts, or accounts that have a balance of over 100,000.
+
+```
+        out_file.open("accounts", ios::out | ios::app);
+        cout << "Please entre a name: ";
+        cin >> acc1.name;
+        cout << "Please entre the account number: ";
+        cin >> acc1.accNum;
+        cout << "Please entre the balance: ";
+        cin >> acc1.bal;
+        out_file << acc1.name << endl;
+        out_file << acc1.accNum << endl;
+        out_file << acc1.bal << endl;
+        system("cls");
+			
+	while (true)
+	{
+		int temp;
+		cout << "\nDo you whish to enter more? 1: yes 2: no" << endl;
+		cin >> temp;
+		if (temp == 2)
+		{
+			while2 = false;
+			break;
+		}
+		if (temp == 1)
+		{
+		        break;
+		}
+		else
+		{
+		        system("cls");
+		        cout << "Invalid answer;" << endl;
+		}
+	}
+```
+<br>
+
+```
+	in_file.open("accounts");
+	if (!in_file.eof())
+	{
+		count = 0;
+
+		while (!in_file.eof())
+		{
+			if (in_file.eof())
+			{
+				break;
+			}
+			in_file >> acc2.name;
+			in_file >> acc2.accNum;
+			in_file >> acc2.bal;
+			++count;
+			cout << "\nAccout: " << count << endl << "Name on account: " << acc2.name << endl << "Account Number: " << acc2.accNum << endl<< "Balance: " << acc2.bal << endl;
+		}
+	}
+```
+
+</details>
+<details>
+<summary>39: Top 10 Scores</summary>
+<br>
+
+</details>
+</details>
+<br>
+
+<details>
+<summary>Chapter 15: OOP</summary>
+<br>
+
+<details>
+<details>
+<summary>40: ePet Care</summary>
+<br>
+Program 40 had me introduced to object orientated programming where I had to create a pet class that I have to take care of, and several childeren classes representing a dog, cat, and hamster.
+<br>
+For this I have to give the user a pet they need to take care of using values stared in the classes, and I have to gather the information from all the values and differnt classes to help the user take care of their pet.
+        
+```
+class Pet
+{
+public:
+	Pet(int huger = 0, int boredom = 0);
+	~Pet();
+	virtual void Talk();
+	void Feed(int food = 4);
+	void Play(int fun = 4);
+private:
+	int m_hunger;
+	int m_bored;
+protected:
+	inline const int GetMood() { return m_hunger + m_bored; }
+	void PassingTime(int time = 1);
+};
+
+class Cat : public Pet
+{
+public:
+	void Talk()
+	{
+
+		cout << "I'm a cat " << endl;
+		cout << "I am your pet and I feel ";
+
+		int mood = GetMood();
+		if (mood > 15)
+		{
+			cout << "MAD!!" << endl;
+		}
+		else if (mood > 10)
+		{
+			cout << "frustrated." << endl;
+		}
+		else if (mood > 5)
+		{
+			cout << "okay." << endl;
+		}
+		else
+		{
+			cout << "happy!" << endl;
+		}
+
+		PassingTime();
+	}
+};
+
+class Dog : public Pet
+{
+public:
+	void Talk() 
+	{
+		cout << "I'm a dog " << endl;
+		cout << "I am your pet and I feel ";
+
+		int mood = GetMood();
+		if (mood > 15)
+		{
+			cout << "MAD!!" << endl;
+		}
+		else if (mood > 10)
+		{
+			cout << "frustrated." << endl;
+		}
+		else if (mood > 5)
+		{
+			cout << "okay." << endl;
+		}
+		else
+		{
+			cout << "happy!" << endl;
+		}
+
+		PassingTime();
+	}
+};
+
+class Hamster : public Pet
+{
+public:
+	void Talk() 
+	{
+		cout << "I'm a hamster " << endl;
+		cout << "I am your pet and I feel ";
+
+		int mood = GetMood();
+		if (mood > 15)
+		{
+			cout << "MAD!!" << endl;
+		}
+		else if (mood > 10)
+		{
+			cout << "frustrated." << endl;
+		}
+		else if (mood > 5)
+		{
+			cout << "okay." << endl;
+		}
+		else
+		{
+			cout << "happy!" << endl;
+		}
+
+		PassingTime();
+	}
+};
+```
+</details>
 </details>
