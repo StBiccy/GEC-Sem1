@@ -915,6 +915,7 @@ Program 24 had me build a text based version of snap which would have me find tw
 <details>
 <summary>psuedo code</summary>
 <br>
+Also in this program I used the Windows.h libary since it includes the sleep function, which allowed me to have the console wait before displaying the next string of inputs.
 
 ![image](https://user-images.githubusercontent.com/115167027/207469558-02eaccd8-ec39-4748-b659-9c0e7870810c.png)
 ![image](https://user-images.githubusercontent.com/115167027/207469574-fcb9c72c-2db4-421c-a437-f048480e338c.png)
@@ -930,34 +931,213 @@ Program 24 had me build a text based version of snap which would have me find tw
 <br>
 
 <details>
+<summary> Chapter 9: Strings</summary>
+<br>
+
+<details>
 <summary> 25: Initals</summary>
 <br>
+Program 25 is when I first used char arrays to build a string of characters, and the whole idea behind this program is to get the user to enter the initail for their first name followed by a space, the initail for their middel name followed by a sapce, and thier full surname. From the input I have to console their first initail then on a new line the middle initail, and on one last line their surname.
+<br>
+Although there are easy ways of doing this I had it so the first character was the users first inital, and then it loops though the array looking for a space and after that it their middel initial, and from there it looks for a different space and after that space is the surname.
+
+```
+	for (int i = 0; i < 50; ++i)
+	{
+		if (initials[i] == '\0')
+			break;
+		
+		if (startSurname)
+			std::cout << initials[i];
+
+		if (!startSurname)
+		{
+			if (initials[i] == ' ' && !middelSet)
+			{
+				std::cout << "Middel Initial: " << initials[i + 1] << std::endl;
+				middelSet = true;
+				++i;
+			}
+
+			else if (initials[i] == ' ')
+			{
+				std::cout << "Surname: ";
+				startSurname = true;
+			}
+			if (i == 0)
+			{
+				std::cout << "First Initial: " << initials[i] << std::endl;
+			}
+		}
+	}
+```
+<br>
+
+![image](https://user-images.githubusercontent.com/115167027/207674855-98669851-a1fe-4e04-976f-6e261622ead7.png)
+
 
 </details>
 
 <details>
 <summary> 26: Replacing Characters</summary>
 <br>
+Program 26 had me start learning how to use strings properly, and started me using the string libary. What this had me doing was I was to get the user to input a  sentence and I need to replace the uses of the character 'e' in that sentence with 'X'.
+<br>
+This one had it so using the string libary I'd have tp use the functions getline to get the full line of text when inputing in a string, and with that string I'd use the replace function to search the string begining to end inorder to find the the character 'e' and replace it with 'X'.
+
+```
+int main()
+{
+	std::string sentence;
+
+	std::cout << "Please enter a sentence (try using the letter e at least once)" << std::endl;
+
+	getline(std::cin, sentence);
+
+	std::replace(sentence.begin(), sentence.end(), 'e', 'X');
+
+	std::cout << sentence;
+}
+```
+<br>
+
+![image](https://user-images.githubusercontent.com/115167027/207678489-2fd307dd-f184-4fc4-92ec-e77949ae1d04.png)
+
 
 </details>
 
 <details>
 <summary> 27: String Manipulation</summary>
 <br>
+Program 27 is where I was tasked to manipulate a string to the change it's contents in a small variety of ways.
+<br>
+First the program had the user enter their name, and fromt hat it would insert that name into the middel of two Xs int a predefined string which can be done with the insert function, and then output the result of that string to console. After that I need to find and remove the instance of 'X' in the name which can be done with the replace function. And finaly the user needs to input a new longer name and then replace the name in the string with the new one.
+
+```
+int main()
+{
+	std::string name1;
+	std::string name2;
+	std::string s = "Do you know who loves C++ XX does";
+
+
+	std::cout << "Enter Your Name." << std::endl;
+
+	getline(std::cin, name1);
+
+	s.insert(27, name1);
+
+	std::cout << s << std::endl;
+
+	std::replace(s.begin(), s.end(), 'X', '\0');
+
+	std::cout << s << std::endl;
+
+	std::cout << "Enter a new longer name" << std::endl;
+
+	getline(std::cin, name2);
+
+	while (name2.size() <= name1.size())
+	{
+		std::cout << "It needs to be longer. Insert a new name" << std::endl;
+		getline(std::cin, name2);
+	}
+
+	s.replace(s.find(name1), name1.size(), name2);
+
+	std::cout << s << std::endl;
+
+}
+```
+<br>
+
+![image](https://user-images.githubusercontent.com/115167027/207683567-dd43a72d-20f8-4c0a-8510-d12dc9830b3a.png)
 
 </details>
 
 <details>
 <summary> 28: String and Vectors</summary>
 <br>
+Program 28 gave me a screenshot of the console output bellow and I was taksed with recrating that out put using a string vector.
+<br>
+
+<details>
+<summary>expected output</summary>
+
+![image](https://user-images.githubusercontent.com/115167027/207684540-6c7f1438-f320-4f62-bea9-87f4670d5a18.png)
+</details>
+<br>
+
+In this I learned how vectors work where it's practically a dynamic array where I use the push_back function to increase the size of the vector.
+
+```
+	std::vector <std::string> inventory;
+	int heldMax = 3;
+
+	inventory.push_back("sword");
+
+
+	for (int i = 1; i < heldMax; ++i)
+	{
+		std::string ans;
+
+		std::string item1;
+		std::string item2;
+
+		if (i == 1)
+		{
+			item1 = "Staff";
+			item2 = "Knife";
+		}
+		else if (i == 2)
+		{
+			item1 = "Healing potion";
+			item2 = "Fire spell";
+		}
+
+		std::cout << "Type which item you wish to keep: " << item1 <<" or " << item2 << std::endl;
+
+		getline(std::cin, ans);
+
+		if (ans == item1 || ans == item2)
+		{
+			inventory.push_back(ans);
+			std::cout << "Your inventory holds" << std::endl;
+			for (int j = 0; j < inventory.size(); ++j)
+				std::cout << inventory[j] << std::endl;
+		}
+		else
+		{
+			std::cout << "Enter a valid item!" << std::endl;
+			--i;
+		}
+	}
+```
+<br>
+Aside from that this program is similar to other programs I created like the inventory program.
 
 </details>
 
 <details>
-<summary> 29: Rock, Paper< Scissors</summary>
+<summary> 29: Rock, Paper, Scissors</summary>
+<br>
+Program 29 made me make a game of rock, paper, scissors where you play aginst the pc. This program introduce to me the use of the rand function from the random libary to create semi random events.
+
+```
+		string cSelect[] = {"Rock", "Paper", "Scissors"};
+		int index = rand() % 3;
+
+		cout << "Computer chose: " << cSelect[index] << endl;
+```
+<br>
+Aside from the use of the rand function, this just had me use principles I already learned. I Create a score system and depending on who reaches 3 wins first dictates who the winner is of the game.
 <br>
 
+![image](https://user-images.githubusercontent.com/115167027/207687982-ecc5230d-fa0b-45fe-b1c2-fb6e9317052a.png)
+
 </details>
+</details>
+<br>
 
 <details>
 <summary> 30: Broken Code</summary>
