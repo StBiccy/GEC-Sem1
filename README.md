@@ -1544,7 +1544,6 @@ For this program I added to append files into a system that holds information on
 <br>
 
 <details>
-<details>
 <summary>40: ePet Care</summary>
 <br>
 Program 40 had me introduced to object orientated programming where I had to create a pet class that I have to take care of, and several childeren classes representing a dog, cat, and hamster.
