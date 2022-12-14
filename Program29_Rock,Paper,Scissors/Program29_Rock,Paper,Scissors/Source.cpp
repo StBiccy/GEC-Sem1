@@ -25,9 +25,9 @@ int main()
 			cin >> pSelect;
 			pSelect[0] = toupper(pSelect[0]);
 		}
-		cout <<"You chose: " << pSelect << endl;
+		cout << "You chose: " << pSelect << endl;
 
-		string cSelect[] = {"Rock", "Paper", "Scissors"};
+		string cSelect[] = { "Rock", "Paper", "Scissors" };
 		int index = rand() % 3;
 
 		cout << "Computer chose: " << cSelect[index] << endl;
@@ -50,25 +50,27 @@ int main()
 			cout << "It was a draw!" << endl;
 		}
 
-		cout << "You need : " << pWinsRem << " wins yo complete the game." << endl;
-		cout << "The Computer needs : " << cWinsRem << " wins yo complete the game." << endl;
+		cout << "You need : " << pWinsRem << " wins to complete the game." << endl;
+		cout << "The Computer needs : " << cWinsRem << " wins to complete the game." << endl;
 		cout << "**************************************" << endl;
 
 		if (pWinsRem == 0)
 		{
 			!isPlaying;
 			cout << "Congratulations, you won!!!!" << endl;
+			break;
 		}
-		else if(cWinsRem == 0)
-		{ 
+		else if (cWinsRem == 0)
+		{
 			!isPlaying;
 			cout << "Better luck next time, computer won!!!!" << endl;
+			break;
 		}
 	}
 	cout << "Game over..." << endl;
 }
 
- 
+
 int check(string cPick, string pPick)
 {
 	if (cPick == pPick)
