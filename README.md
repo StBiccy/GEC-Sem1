@@ -1534,7 +1534,111 @@ For this program I added to append files into a system that holds information on
 <details>
 <summary>39: Top 10 Scores</summary>
 <br>
+Program 39 is where I had to create an store the top 10 values that a user inputs, from that I also need to out put the user's scores in a well formated list.
+<br>
+The first thing I needed to do is have a place to store the values that are already in the file, because when it comes to updating the score I will need to rewrite the whole file listing the names a scores to take account of the new and top scores. I did this with the use of vectors since I can push them back depending on how many values I currently have to input.
 
+```
+	vector<int> score;
+	vector<string>name;
+
+
+	ifstream inFile;
+	ofstream outFile;
+
+	outFile.open("score.txt", ios::out | ios::app);
+	outFile.close();
+	inFile.open("score.txt");
+	while (!inFile.eof())
+	{
+		int tempScore;
+		string tempName;
+
+		inFile >> tempScore;
+
+		if (inFile.eof())
+		{
+			break;
+		}
+		score.push_back(tempScore);
+		inFile >> tempName;
+		name.push_back(tempName);
+	}
+	inFile
+```
+<br>
+When I add in a new listing to the score I need to loop though though the score vector inorder to see if the new value is smaller then any previously exisiting value, and if it is then I swap the new value with the vector that is smaller and continue down the list like that outputting the values into the file one by one. When there isn't 10 numbers in the vector then once it reaches the last vector in the loop it pushes the vector back and adds a new score to it before out putting the value into the file.
+
+```
+	outFile.open("score.txt");
+
+	cout << "Enter a score" << endl;
+	cin >> newScore;
+
+
+	cout << "Enter a name" << endl;
+	cin >> newName;
+
+	for (int i = 0; i < 10; ++i)
+	{
+		if (vectSize < i + 1)
+		{
+			score.push_back(newScore);
+			name.push_back(newName);
+
+			outFile << score[i] << endl;
+			outFile << name[i] << endl;
+			++vectSize;
+
+			break;
+		}
+
+		if (score[i] < newScore)
+		{
+			int tempI = score[i];
+			string tempS = name [i];
+
+			score[i] = newScore;
+			name[i] = newName;
+			
+			newScore = tempI;
+			newName = tempS;
+		}
+		outFile << score[i] << endl;
+		outFile << name[i] << endl;
+	}
+	outFile.close();
+```
+
+<br>
+The last thing I needed to do was output the score to console which involved the use of the iomanip libary, more specficlly the setw() function to add a space between the text inorder to output in a more neat mannor/
+
+```
+	system("cls");
+	if (score.empty())
+	{
+		cout << "No scores in system" << endl;
+	}
+	for (int i = 0; i < vectSize; ++i)
+	{
+		int width = 20;
+
+		int n = name[i].length();
+
+		width -= n;
+
+		if (i == 9)
+		{
+			cout << i + 1 << ": " << name[i];
+		}
+		else
+		{
+			cout << setw(2) << i + 1 << ": " << name[i];
+		}
+		cout << setw(width) << "score: " << score[i] << endl;
+	}
+	system("pause");
+```
 </details>
 </details>
 <br>
