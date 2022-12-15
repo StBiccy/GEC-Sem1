@@ -73,6 +73,7 @@ int main()
 
 					outFile << score[i] << endl;
 					outFile << name[i] << endl;
+					++vectSize;
 
 					break;
 				}
